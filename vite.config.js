@@ -1,17 +1,15 @@
+// vite.config.js
 import { defineConfig } from 'vite';
-import React from '@vitejs/plugin-react';
+import react from '@vitejs/plugin-react';
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    React(),
-  ],
+  plugins: [react()],
   server: {
     proxy: {
-      '/wialon': {
-        target: 'https://hst-api.wialon.com',
+      '/wialon-api': {
+        target: 'https://hst-api.wialon.com', // Update with your server URL
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/wialon/, ''),
+        rewrite: (path) => path.replace(/^\/wialon-api/, ''),
       },
     },
   },
